@@ -39,7 +39,7 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: release-apk
-          path: build/app/outputs/apk/release/app-release.apk
+          path: build/app/outputs/bundle/release/app-release.aab
   # CD
   deploy_android:
     runs-on: ubuntu-latest
@@ -51,10 +51,10 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 12.x
-      - name: Decrypt Android keys
-        run: sh ./.github/scripts/decrypt_android_keys.sh
-        env:
-          ANDROID_KEYS_SECRET_PASSPHRASE: ${{ secrets.ANDROID_KEYS_SECRET_PASSPHRASE }}
+#      - name: Decrypt Android keys
+#        run: sh ./.github/scripts/decrypt_android_keys.sh
+#        env:
+#          ANDROID_KEYS_SECRET_PASSPHRASE: ${{ secrets.ANDROID_KEYS_SECRET_PASSPHRASE }}
       - name: Setup Flutter
         uses: subosito/flutter-action@v1
         with:
