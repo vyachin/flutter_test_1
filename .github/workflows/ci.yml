@@ -16,10 +16,10 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 12.x
-      - name: Decrypt Android keys
-        run: sh ./.github/scripts/decrypt_android_keys.sh
-        env:
-          ANDROID_KEYS_SECRET_PASSPHRASE: ${{ secrets.ANDROID_KEYS_SECRET_PASSPHRASE }}
+#      - name: Decrypt Android keys
+#        run: sh ./.github/scripts/decrypt_android_keys.sh
+#        env:
+#          ANDROID_KEYS_SECRET_PASSPHRASE: ${{ secrets.ANDROID_KEYS_SECRET_PASSPHRASE }}
       - name: Setup Flutter
         uses: subosito/flutter-action@v1
         with:
@@ -34,7 +34,7 @@ jobs:
       - name: Run the tests
         run: flutter test
       - name: Build the APK
-        run: flutter build apk --release
+        run: flutter build appbundle --release
       - name: Upload artifact to Github
         uses: actions/upload-artifact@v1
         with:
